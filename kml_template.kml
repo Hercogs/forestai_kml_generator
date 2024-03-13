@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:ns2="http://www.google.com/kml/ext/2.2" xmlns:ns3="http://www.w3.org/2005/Atom" xmlns:ns4="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0">
+    <Document>
+        <Style id="eglePolyStyle">
+            <PolyStyle>
+                <!--pink-->
+                <color>96ee00ff</color>
+                <colorMode>random</colorMode>
+            </PolyStyle>
+        </Style>
+        <Style id="priedePolyStyle">
+            <PolyStyle>
+                <!--green-->
+                <color>961dff00</color>
+                <colorMode>random</colorMode>
+            </PolyStyle>
+        </Style>
+        <Style id="otherPolyStyle">
+            <PolyStyle>
+                <!--pink-->
+                <color>96ffffff</color>
+                <colorMode>random</colorMode>
+            </PolyStyle>
+        </Style>
+
+        <Schema name="vmdpubliccompartments_1" id="vmdpubliccompartments_1">
+            <SimpleField type="int" name="ogc_fid"/>
+            <SimpleField type="string" name="kadastrs"/>
+            <SimpleField type="short" name="kvart"/>
+            <SimpleField type="short" name="nog"/>
+            <SimpleField type="short" name="anog"/>
+            <SimpleField type="float" name="nog_plat"/>
+            <SimpleField type="float" name="expl_mezs"/>
+            <SimpleField type="float" name="expl_celi"/>
+            <SimpleField type="float" name="expl_gravj"/>
+            <SimpleField type="short" name="zkat"/>
+            <SimpleField type="short" name="mt"/>
+            <SimpleField type="short" name="izc"/>
+            <SimpleField type="short" name="p_darbg"/>
+            <SimpleField type="short" name="p_darbv"/>
+            <SimpleField type="short" name="p_cirg"/>
+            <SimpleField type="short" name="p_cirp"/>
+            <SimpleField type="int" name="atj_gads"/>
+            <SimpleField type="short" name="plant_audz"/>
+            <SimpleField type="int" name="s10"/>
+            <SimpleField type="short" name="a10"/>
+            <SimpleField type="float" name="h10"/>
+            <SimpleField type="float" name="d10"/>
+            <SimpleField type="float" name="g10"/>
+            <SimpleField type="int" name="n10"/>
+            <SimpleField type="short" name="bv10"/>
+            <SimpleField type="short" name="ba10"/>
+            <SimpleField type="int" name="s11"/>
+            <SimpleField type="short" name="a11"/>
+            <SimpleField type="float" name="h11"/>
+            <SimpleField type="float" name="d11"/>
+            <SimpleField type="float" name="g11"/>
+            <SimpleField type="int" name="n11"/>
+            <SimpleField type="short" name="bv11"/>
+            <SimpleField type="short" name="ba11"/>
+            <SimpleField type="int" name="s12"/>
+            <SimpleField type="short" name="a12"/>
+            <SimpleField type="float" name="h12"/>
+            <SimpleField type="float" name="d12"/>
+            <SimpleField type="float" name="g12"/>
+            <SimpleField type="int" name="n12"/>
+            <SimpleField type="short" name="bv12"/>
+            <SimpleField type="short" name="ba12"/>
+            <SimpleField type="int" name="s13"/>
+            <SimpleField type="short" name="a13"/>
+            <SimpleField type="float" name="h13"/>
+            <SimpleField type="float" name="d13"/>
+            <SimpleField type="float" name="g13"/>
+            <SimpleField type="int" name="n13"/>
+            <SimpleField type="short" name="bv13"/>
+            <SimpleField type="short" name="ba13"/>
+            <SimpleField type="int" name="s14"/>
+            <SimpleField type="short" name="a14"/>
+            <SimpleField type="float" name="h14"/>
+            <SimpleField type="float" name="d14"/>
+            <SimpleField type="float" name="g14"/>
+            <SimpleField type="int" name="n14"/>
+            <SimpleField type="short" name="bv14"/>
+            <SimpleField type="short" name="ba14"/>
+            <SimpleField type="short" name="gtf"/>
+            <SimpleField type="short" name="jaatjauno"/>
+            <SimpleField type="short" name="saimn_d_ie"/>
+            <SimpleField type="short" name="jakopj"/>
+            <SimpleField type="string" name="color"/>
+        </Schema>
+        <Folder>
+            <name>vmdpubliccompartments</name>
+        </Folder>
+    </Document>
+</kml>
