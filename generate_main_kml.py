@@ -6,6 +6,8 @@ import getopt
 import numpy as np
 
 from fastkml import kml
+from pygeoif.geometry import Point
+
 
 from fastkml import styles
 
@@ -95,7 +97,34 @@ def process_kml(kml_string, object_id, suga):
     else:
         append_kml(placemark_first_features)
 
+    # Generate placemark for point object to better see polygon
+    p = generate_point_placemark(placemark_first_features, suga)
+    append_kml(p)
+
     return True, lvm_geo_data
+
+
+def generate_point_placemark(polygon_placemark, suga):
+    # Get coordinates
+    coordinates = polygon_placemark.geometry.bounds
+    x = (coordinates[0] + coordinates[2]) / 2
+    y = (coordinates[1] + coordinates[3]) / 2
+
+    p = kml.Placemark()
+    p.geometry = Point(x, y, 0.0)
+
+    # Set color
+    if suga == "Egle":
+        p.styleUrl = "#eglePolyStyle"
+        p.name = suga
+    elif suga == "Priede":
+        p.styleUrl = "#priedePolyStyle"
+        p.name = suga
+    else:
+        p.styleUrl = "#otherPolyStyle"
+        p.name = "Cits"
+
+    return p
 
 
 def write_placemark_data(name, value, placemark):
@@ -174,11 +203,12 @@ def main(argv):
 
     # Add extra column for VMD atj_gads
     df.insert(8, "atj_gads", np.nan)
+    lines = df.shape[0]
 
     for index, row in df.iterrows():
         kad, kvar, nog = row["KADAST"], row["KV"], row["NOG"]
 
-        logger.info(f"Processing row index({index}) ...")
+        logger.info(f"Processing row index ({index}) out of {lines}")
 
         if not is_row_valid(kad, kvar, nog):
             logger.error(f"Row index({index}) {kad}_{kvar}_{nog} is not valid")
@@ -203,7 +233,7 @@ def main(argv):
         # else:
         #     df.at[row, "atj_gads"] = ""
 
-        # if index > 10:
+        # if index > 1:
         #     break
 
     # Save main kml

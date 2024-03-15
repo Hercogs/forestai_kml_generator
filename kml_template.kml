@@ -1,26 +1,60 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:ns2="http://www.google.com/kml/ext/2.2" xmlns:ns3="http://www.w3.org/2005/Atom" xmlns:ns4="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0">
     <Document>
+
         <Style id="eglePolyStyle">
             <PolyStyle>
                 <!--pink-->
                 <color>96ee00ff</color>
                 <colorMode>random</colorMode>
             </PolyStyle>
+            <LabelStyle>
+                <scale>1.2</scale>
+                <color>ff33ff99</color>
+            </LabelStyle>
+            <IconStyle>
+                <scale>2</scale>
+                <Icon>
+                    <href>https://i.imgur.com/ktjwuqm.png</href>
+                </Icon>
+            </IconStyle>
+
         </Style>
+
         <Style id="priedePolyStyle">
             <PolyStyle>
                 <!--green-->
                 <color>961dff00</color>
                 <colorMode>random</colorMode>
             </PolyStyle>
+            <LabelStyle>
+                <scale>1.2</scale>
+                <color>ff33ff99</color>
+            </LabelStyle>
+            <IconStyle>
+                <scale>2</scale>
+                <Icon>
+                    <href>https://i.imgur.com/GlPhusI.png</href>
+                </Icon>
+            </IconStyle>
         </Style>
+
         <Style id="otherPolyStyle">
             <PolyStyle>
                 <!--pink-->
                 <color>96ffffff</color>
                 <colorMode>random</colorMode>
             </PolyStyle>
+            <LabelStyle>
+                <scale>1.2</scale>
+                <color>ff33ff99</color>
+            </LabelStyle>
+            <IconStyle>
+                <scale>2</scale>
+                <Icon>
+                    <href>https://i.imgur.com/I3s582c.png</href>
+                </Icon>
+            </IconStyle>
         </Style>
 
         <Schema name="vmdpubliccompartments_1" id="vmdpubliccompartments_1">
