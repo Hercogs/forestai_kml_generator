@@ -147,6 +147,7 @@ def append_to_log(msg):
 
 def is_row_valid(kad, kvart, nog):
     row = [kad, kvart, nog]
+    return True
     for i in row:
         # Check if type is float
         if type(i) is str:
@@ -199,7 +200,7 @@ def main(argv):
     # Create downloader
     kml_downloader = libs.lvmgeo_kml_downloader.KMLDownloader()
 
-    df = pd.read_excel(input_file, )
+    df = pd.read_excel(input_file, converters={"KADAST": str, "KV": str, "NOG": str})
 
     # Add extra column for VMD atj_gads
     df.insert(8, "atj_gads", np.nan)
@@ -214,7 +215,7 @@ def main(argv):
             logger.error(f"Row index({index}) {kad}_{kvar}_{nog} is not valid")
             append_to_log(f"Row index({index}) {kad}_{kvar}_{nog} is not valid")
             continue
-        kad, kvar, nog = int(kad), int(kvar), int(nog)
+        #kad, kvar, nog = int(kad), int(kvar), int(nog)
         object_id = f"{kad}_{kvar}_{nog}"
 
         status, kml_data = kml_downloader.download_kml(kad, kvar, nog)
