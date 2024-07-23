@@ -18,7 +18,7 @@ logger = logging.getLogger('main')
 logging.basicConfig(format='%(name)s:%(levelname)s:%(message)s', stream=sys.stderr ,level = logging.INFO)
 
 
-DEFAULT_INPUT_FILE = "./input/input.xlsx"
+DEFAULT_INPUT_FILE = "./input/test.xlsx"
 DEFAULT_KML_TEMPLATE = "./kml_template.kml"
 
 # Global KML
@@ -40,6 +40,42 @@ def append_kml(placemark):
     folder_first_features = folder_list_features[0]
 
     folder_first_features.append(placemark)
+
+    logger.info(f"Appended kml")
+
+
+def generate_single_kml_file(kml_data, object_id):
+    k = kml.KML()
+    k.from_string(kml_data.encode("utf-8"))
+
+    # This corresponds to the single ``Document``
+    document_features = list(k.features())
+
+    # Get folder list
+    folder_list_features = list(document_features[0].features())
+
+    # Get first folder
+    folder_first_features = folder_list_features[0]
+
+    # Get placemark list
+    placemark_list_features = list(folder_first_features.features())
+
+    # Get first placemark
+    placemark_first_features = placemark_list_features[0]
+
+
+    # Create new kml file
+    k_new = kml.KML()
+    ns = "{http://www.opengis.net/kml/2.2}"
+    d = kml.Document(ns=ns, id=object_id, name=object_id, description=object_id)
+    k_new.append(d)
+    d.append(placemark_first_features)
+
+    with open("output/kml_files" + '/' + object_id + '.kml', 'w', encoding='utf-8') as kml_new_file:
+        kml_new_file.write(k_new.to_string(prettyprint=True))
+        #print(k_new.to_string(prettyprint=True))
+
+        logger.info(f"Single kml generated: {object_id}")
 
 
 def process_kml(kml_string, object_id, suga):
@@ -215,7 +251,7 @@ def main(argv):
             logger.error(f"Row index({index}) {kad}_{kvar}_{nog} is not valid")
             append_to_log(f"Row index({index}) {kad}_{kvar}_{nog} is not valid")
             continue
-        #kad, kvar, nog = int(kad), int(kvar), int(nog)
+
         object_id = f"{kad}_{kvar}_{nog}"
 
         status, kml_data = kml_downloader.download_kml(kad, kvar, nog)
@@ -224,6 +260,10 @@ def main(argv):
             append_to_log(f"Row index({index}) {object_id} not found in LVMGEO VMD database")
             continue
 
+        # Generate KML file with this specific geometry only
+        generate_single_kml_file(kml_data, object_id)
+
+        # Append this geometry to overall kml file
         status, lvm_geo_data = process_kml(kml_data, object_id, row["SUG"])
         if not status:
             logger.error(f"process_kml() failed for {object_id}")
